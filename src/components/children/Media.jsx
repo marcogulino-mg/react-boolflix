@@ -1,5 +1,7 @@
 export default function Media() {
-  <>
-    <h3>Media</h3>
-  </>;
+  return (
+    <>
+      <div className="media-card"></div>
+    </>
+  );
 }

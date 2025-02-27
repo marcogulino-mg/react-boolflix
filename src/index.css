@@ -27,6 +27,8 @@ a:hover {
 body {
   place-items: center;
   height: 100vh;
+  background-color: rgb(27, 27, 27);
+  color: rgb(255, 255, 255);
 }
 
 h1 {
@@ -70,15 +72,28 @@ button:focus-visible {
 /* HEADER */
 header {
   height: 100px;
-  background-color: rgb(27, 27, 27);
-  display: flex;
-  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 header > div {
-  width: 1200px;
-  margin: 0 auto;
+  height: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+/* MAIN */
+
+/* MEDIA CARD */
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.media-card {
+  /* DEBUG */
+  background-color: red;
+  height: 500px;
+  width: 250px;
 }
