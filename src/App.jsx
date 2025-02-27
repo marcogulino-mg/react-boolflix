@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from "axios";
 // Import Contexts
 import MediaContext from "./contexts/MediaContext";
+// Import Layouts
+import Defaultlayout from "./layouts/DefaultLayout";
 // Import Pages
 import Homepage from "./pages/HomePage";
 import Mediapage from "./pages/MediaPage";
@@ -16,8 +18,10 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route index Component={Homepage} />
-          <Route path="search" Component={Mediapage} />
+          <Route Component={Defaultlayout}>
+            <Route index Component={Homepage} />
+            <Route path="search" Component={Mediapage} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </>

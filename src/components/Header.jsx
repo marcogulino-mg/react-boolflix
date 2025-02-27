@@ -1,7 +1,10 @@
 export default function Header() {
   return (
     <header>
-      <h1>Header Title</h1>
+      <div>
+        <h1>BoolFlix</h1>
+        <input type="text" name="search" id="search" />
+      </div>
     </header>
   );
 }
