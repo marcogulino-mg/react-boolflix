@@ -14,16 +14,30 @@ export default function Header() {
   function searchMedias() {
     const apiKey = "6c2e46075c8f0aaae13ed6e7b661b248";
     let querySearch = searchMedia;
+
     // DEBUG
     let numPage = 1;
-    let queryTarget = "movie";
+    let queryTarget;
+
+    const endpoints = [
+      `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${querySearch}&include_adult=true&language=en-US&page=${numPage}`,
+      `https://api.themoviedb.org/3/search/tv?api_key=${apiKey}&query=${querySearch}&include_adult=true&language=en-US&page=${numPage}`,
+    ];
 
     axios
-      .get(
-        `https://api.themoviedb.org/3/search/${queryTarget}?api_key=${apiKey}&query=${querySearch}&include_adult=true&language=en-US&page=${numPage}`
+      .all(endpoints.map((endpoint) => axios.get(endpoint)))
+      .then(
+        axios.spread(function (movie, tv) {
+          setMovies(movie.data);
+          setTvSeries(tv.data);
+        })
       )
-      .then((res) => setMovies(res.data))
       .catch((err) => console.error(err));
+  }
+
+  function handleSearch(value) {
+    setSearchMedia(value);
+    searchMedias();
   }
 
   // DEBUG
@@ -41,10 +55,11 @@ export default function Header() {
             name="search"
             id="search"
             value={searchMedia}
-            onChange={(e) => setSearchMedia(e.target.value)}
+            onChange={(e) => {
+              handleSearch(e.target.value);
+            }}
           />
-          <button onClick={searchMedias}>Search</button>
-          <button onClick={print}>DEBUG</button>
+          {/* <button onClick={print}>DEBUG</button> */}
         </div>
       </div>
     </header>

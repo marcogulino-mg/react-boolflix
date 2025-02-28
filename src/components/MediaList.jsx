@@ -6,7 +6,7 @@ import MediaContext from "../contexts/MediaContext";
 
 export default function Medialist() {
   // List of Medias (TV Series, Movies)
-  const { movies } = useContext(MediaContext);
+  const { movies, tvSeries } = useContext(MediaContext);
 
   return (
     <>
@@ -19,7 +19,15 @@ export default function Medialist() {
         )}
       </div>
       <h2>TV SERIES</h2>
-      <div className="container-media"></div>
+      <div className="container-media">
+        {movies.results !== undefined ? (
+          tvSeries.results.map((media) => (
+            <Media key={media.id} media={media} />
+          ))
+        ) : (
+          <h2>Campo di ricerca vuoto</h2>
+        )}
+      </div>
     </>
   );
 }
