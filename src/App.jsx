@@ -12,11 +12,16 @@ import Mediapage from "./pages/MediaPage";
 
 function App() {
   // State Vars
-  const [medias, setMedias] = useState([]);
+  // Movies
+  const [movies, setMovies] = useState([]);
+  // TV Series
+  const [tvSeries, setTvSeries] = useState([]);
 
   return (
     <>
-      <MediaContext.Provider value={{ medias, setMedias }}>
+      <MediaContext.Provider
+        value={{ movies, setMovies, tvSeries, setTvSeries }}
+      >
         <BrowserRouter>
           <Routes>
             <Route Component={Defaultlayout}>

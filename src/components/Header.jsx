@@ -5,7 +5,7 @@ import MediaContext from "../contexts/MediaContext";
 
 export default function Header() {
   // List of Medias (TV Series, Movies)
-  const { medias, setMedias } = useContext(MediaContext);
+  const { movies, setMovies, tvSeries, setTvSeries } = useContext(MediaContext);
 
   // Container Value of search
   const [searchMedia, setSearchMedia] = useState([]);
@@ -14,17 +14,21 @@ export default function Header() {
   function searchMedias() {
     const apiKey = "6c2e46075c8f0aaae13ed6e7b661b248";
     let querySearch = searchMedia;
+    // DEBUG
     let numPage = 1;
+    let queryTarget = "movie";
+
     axios
       .get(
-        `https://api.themoviedb.org/3/search/multi?api_key=${apiKey}&query=${querySearch}&include_adult=true&language=en-US&page=${numPage}`
+        `https://api.themoviedb.org/3/search/${queryTarget}?api_key=${apiKey}&query=${querySearch}&include_adult=true&language=en-US&page=${numPage}`
       )
-      .then((res) => setMedias(res.data))
+      .then((res) => setMovies(res.data))
       .catch((err) => console.error(err));
   }
 
+  // DEBUG
   function print() {
-    console.log(medias);
+    console.log(movies);
   }
 
   return (

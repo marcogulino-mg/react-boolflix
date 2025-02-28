@@ -84,12 +84,11 @@ header > div {
 
 /* MEDIA CARD */
 main {
-  max-width: 1200px;
+  max-width: 1500px;
   margin: 0 auto;
 }
 
 .container-media {
-  max-width: 1200px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;

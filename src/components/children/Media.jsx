@@ -12,7 +12,7 @@ export default function Media(props) {
           }
           alt={props.media.title ? props.media.title : props.media.name}
         />
-        <h3>{props.media.title ? props.media.title : props.media.name}</h3>
+        {/* <h3>{props.media.title ? props.media.title : props.media.name}</h3> */}
       </div>
     </>
   );
