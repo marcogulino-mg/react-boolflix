@@ -15,7 +15,7 @@ export default function Medialist() {
         {movies.results !== undefined ? (
           movies.results.map((media) => <Media key={media.id} media={media} />)
         ) : (
-          <h2>Campo di ricerca vuoto</h2>
+          <h2>Nessun Film Trovato</h2>
         )}
       </div>
       <h2>TV SERIES</h2>
@@ -25,7 +25,7 @@ export default function Medialist() {
             <Media key={media.id} media={media} />
           ))
         ) : (
-          <h2>Campo di ricerca vuoto</h2>
+          <h2>Nessuna Serie TV Trovata</h2>
         )}
       </div>
     </>
