@@ -16,14 +16,16 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route Component={Defaultlayout}>
-            <Route index Component={Homepage} />
-            <Route path="search" Component={Mediapage} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+      <MediaContext.Provider value={{ medias }}>
+        <BrowserRouter>
+          <Routes>
+            <Route Component={Defaultlayout}>
+              <Route index Component={Homepage} />
+              <Route path="search" Component={Mediapage} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </MediaContext.Provider>
     </>
   );
 }

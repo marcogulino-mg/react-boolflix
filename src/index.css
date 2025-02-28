@@ -83,6 +83,12 @@ header > div {
   align-items: center;
 }
 
+.search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 /* MAIN */
 
 /* MEDIA CARD */
