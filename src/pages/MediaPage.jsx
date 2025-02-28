@@ -1,4 +1,4 @@
-// Import MediaList.jsx
+// IMPORT MediaList.jsx
 import MediaList from "../components/MediaList";
 
 export default function Mediapage() {

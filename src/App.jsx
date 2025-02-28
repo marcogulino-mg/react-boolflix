@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from "axios";
-// Import Contexts
+// IMPORT Contexts
 import MediaContext from "./contexts/MediaContext";
-// Import Layouts
+// IMPORT Layouts
 import Defaultlayout from "./layouts/DefaultLayout";
-// Import Pages
+// IMPORT Pages
 import Homepage from "./pages/HomePage";
 import Mediapage from "./pages/MediaPage";
-// import "./App.css";
+// IMPORT "./App.css";
 
 function App() {
   // State Vars
@@ -16,7 +16,7 @@ function App() {
 
   return (
     <>
-      <MediaContext.Provider value={{ medias }}>
+      <MediaContext.Provider value={{ medias, setMedias }}>
         <BrowserRouter>
           <Routes>
             <Route Component={Defaultlayout}>

@@ -1,26 +1,30 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
+// IMPORT Contexts
+import MediaContext from "../contexts/MediaContext";
 
 export default function Header() {
-  // Container Value of search
-  const [searchMedia, setSearchMedia] = useState("");
+  // List of Medias (TV Series, Movies)
+  const { medias, setMedias } = useContext(MediaContext);
 
-  // API Specs definition
-  const options = {
-    method: "GET",
-    url: "https://api.themoviedb.org/3/search/movie?query=ritorno&include_adult=false&language=en-US&page=1",
-    headers: {
-      accept: "application/json",
-      Authorization: "Bearer 6c2e46075c8f0aaae13ed6e7b661b248",
-    },
-  };
+  // Container Value of search
+  const [searchMedia, setSearchMedia] = useState([]);
 
   // Functions
   function searchMedias() {
+    const apiKey = "6c2e46075c8f0aaae13ed6e7b661b248";
+    let querySearch = searchMedia;
+    let numPage = 1;
     axios
-      .request(options)
-      .then((res) => console.log(res.data))
+      .get(
+        `https://api.themoviedb.org/3/search/multi?api_key=${apiKey}&query=${querySearch}&include_adult=true&language=en-US&page=${numPage}`
+      )
+      .then((res) => setMedias(res.data))
       .catch((err) => console.error(err));
+  }
+
+  function print() {
+    console.log(medias);
   }
 
   return (
@@ -36,6 +40,7 @@ export default function Header() {
             onChange={(e) => setSearchMedia(e.target.value)}
           />
           <button onClick={searchMedias}>Search</button>
+          <button onClick={print}>DEBUG</button>
         </div>
       </div>
     </header>

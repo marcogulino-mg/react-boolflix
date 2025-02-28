@@ -37,6 +37,10 @@ h1 {
   color: rgb(202, 21, 26);
 }
 
+img {
+  max-width: 100%;
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -44,7 +48,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: rgb(255, 255, 255);
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -54,19 +58,6 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
 }
 
 /* HEADER */
@@ -97,9 +88,19 @@ main {
   margin: 0 auto;
 }
 
+.container-media {
+  max-width: 1200px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+
 .media-card {
-  /* DEBUG */
-  background-color: red;
-  height: 500px;
-  width: 250px;
+  height: 450px;
+  width: 270px;
+}
+
+.media-card > img {
+  height: 450px;
 }
