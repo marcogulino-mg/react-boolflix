@@ -1,4 +1,22 @@
 export default function Media(props) {
+  const convertVote = (vote) => {
+    let newVote = Math.ceil(vote / 2);
+    let imgHTML = [];
+    let index = 0;
+    do {
+      imgHTML.push(
+        newVote !== 0 ? (
+          <img key={index} src="./img/star-solid.svg" alt="vote star" />
+        ) : (
+          "Nessun Voto"
+        )
+      );
+      index++;
+    } while (index < newVote);
+
+    return imgHTML;
+  };
+
   return (
     <>
       <div className="media-card">
@@ -25,7 +43,7 @@ export default function Media(props) {
                 : props.media.original_name}
             </h3>
             <span>{props.media.original_language}</span>
-            <span>Voto: {props.media.vote_average}</span>
+            <span>Voto: {convertVote(props.media.vote_average)}</span>
           </div>
         </div>
       </div>
