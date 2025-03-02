@@ -24,6 +24,10 @@ a:hover {
   color: #535bf2;
 }
 
+ul {
+  list-style: none;
+}
+
 body {
   place-items: center;
   height: 100vh;
@@ -97,15 +101,60 @@ main {
   display: flex;
   justify-content: space-between;
   gap: 20px;
-  margin-bottom: 100px;
+  margin-bottom: 30px;
   overflow-x: scroll;
 }
 
 .media-card {
   flex-shrink: 0;
+  position: relative;
 }
 
 .media-card > img {
   height: 550px;
   width: 330px;
+}
+
+.hover-card:hover .hover-content {
+  display: flex;
+}
+
+.hover-card {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.hover-content {
+  background-color: rgba(0, 0, 0, 0.8);
+  height: 100%;
+  width: 100%;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+}
+
+.title {
+  margin: 0;
+  font-size: 30px;
+}
+
+.title-name {
+  width: 75%;
+}
+
+.direction-sel {
+  display: flex;
+  gap: 50px;
+  margin-bottom: 80px;
+}
+
+.arrow {
+  width: 40px;
+  cursor: pointer;
 }

@@ -5,18 +5,23 @@ import MediaContext from "../contexts/MediaContext";
 
 export default function Header() {
   // List of Medias (TV Series, Movies)
-  const { movies, setMovies, tvSeries, setTvSeries } = useContext(MediaContext);
+  const {
+    movies,
+    setMovies,
+    tvSeries,
+    setTvSeries,
+    searchMedia,
+    setSearchMedia,
+  } = useContext(MediaContext);
 
-  // Container Value of search
-  const [searchMedia, setSearchMedia] = useState([]);
+  const [counter, setCounter] = useState(2);
 
   // Functions
-  function searchMedias() {
+  function searchMedias(numPage) {
     const apiKey = "6c2e46075c8f0aaae13ed6e7b661b248";
     let querySearch = searchMedia;
 
     // DEBUG
-    let numPage = 1;
     let queryTarget;
 
     const endpoints = [
@@ -37,12 +42,13 @@ export default function Header() {
 
   function handleSearch(value) {
     setSearchMedia(value);
-    searchMedias();
+    searchMedias(1);
   }
 
   // DEBUG
-  function print() {
-    console.log(movies);
+  function next() {
+    searchMedias(counter);
+    setCounter((counter) => counter + 1);
   }
 
   return (
@@ -59,7 +65,7 @@ export default function Header() {
               handleSearch(e.target.value);
             }}
           />
-          {/* <button onClick={print}>DEBUG</button> */}
+          <button onClick={next}>NEXT</button>
         </div>
       </div>
     </header>

@@ -16,11 +16,33 @@ function App() {
   const [movies, setMovies] = useState([]);
   // TV Series
   const [tvSeries, setTvSeries] = useState([]);
+  // Container Value of search
+  const [searchMedia, setSearchMedia] = useState([]);
+
+  // Functions
+  function scrollMedia(numPage, choice, searchMedia, typeMedia) {
+    const apiKey = "6c2e46075c8f0aaae13ed6e7b661b248";
+
+    axios
+      .get(
+        `https://api.themoviedb.org/3/search/${typeMedia}?api_key=${apiKey}&query=${searchMedia}&include_adult=true&language=en-US&page=${numPage}`
+      )
+      .then((res) => (choice ? setMovies(res.data) : setTvSeries(res.data)))
+      .catch((err) => console.error(err));
+  }
 
   return (
     <>
       <MediaContext.Provider
-        value={{ movies, setMovies, tvSeries, setTvSeries }}
+        value={{
+          movies,
+          setMovies,
+          tvSeries,
+          setTvSeries,
+          scrollMedia,
+          searchMedia,
+          setSearchMedia,
+        }}
       >
         <BrowserRouter>
           <Routes>

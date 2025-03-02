@@ -12,7 +12,22 @@ export default function Media(props) {
           }
           alt={props.media.title ? props.media.title : props.media.name}
         />
-        {/* <h3>{props.media.title ? props.media.title : props.media.name}</h3> */}
+        <div className="hover-card">
+          <div className="hover-content">
+            <h2 className="title">Titolo:</h2>
+            <h3 className="title-name">
+              {props.media.title ? props.media.title : props.media.name}
+            </h3>
+            <h2 className="title">Titolo Originale:</h2>
+            <h3 className="title-name">
+              {props.media.original_title
+                ? props.media.original_title
+                : props.media.original_name}
+            </h3>
+            <span>{props.media.original_language}</span>
+            <span>Voto: {props.media.vote_average}</span>
+          </div>
+        </div>
       </div>
     </>
   );
