@@ -14,15 +14,13 @@ export default function Header() {
     setSearchMedia,
   } = useContext(MediaContext);
 
-  const [counter, setCounter] = useState(2);
+  // const [counter, setCounter] = useState(2);
 
   // Functions
-  function searchMedias(numPage) {
+  function searchMedias(querySearch, numPage) {
     const apiKey = "6c2e46075c8f0aaae13ed6e7b661b248";
-    let querySearch = searchMedia;
 
-    // DEBUG
-    let queryTarget;
+    console.log(querySearch);
 
     const endpoints = [
       `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${querySearch}&include_adult=true&language=en-US&page=${numPage}`,
@@ -31,25 +29,23 @@ export default function Header() {
 
     axios
       .all(endpoints.map((endpoint) => axios.get(endpoint)))
-      .then(
-        axios.spread(function (movie, tv) {
-          setMovies(movie.data);
-          setTvSeries(tv.data);
-        })
-      )
+      .then(([movie, tv]) => {
+        setMovies(movie.data);
+        setTvSeries(tv.data);
+      })
       .catch((err) => console.error(err));
   }
 
   function handleSearch(value) {
     setSearchMedia(value);
-    searchMedias(1);
+    searchMedias(value, 1);
   }
 
   // DEBUG
-  function next() {
-    searchMedias(counter);
-    setCounter((counter) => counter + 1);
-  }
+  // function next() {
+  //   searchMedias(counter);
+  //   setCounter((counter) => counter + 1);
+  // }
 
   return (
     <header>
@@ -65,7 +61,7 @@ export default function Header() {
               handleSearch(e.target.value);
             }}
           />
-          <button onClick={next}>NEXT</button>
+          {/* <button onClick={next}>NEXT</button> */}
         </div>
       </div>
     </header>

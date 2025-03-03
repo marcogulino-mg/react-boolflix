@@ -36,7 +36,8 @@ export default function Medialist() {
         <li>
           <img
             onClick={() => {
-              setCounterMovies((currMovie) => currMovie - 1);
+              if (counterMovies > 1)
+                setCounterMovies((currMovie) => currMovie - 1);
             }}
             src="./img/backward-solid.svg"
             alt="backward arrow"
@@ -46,7 +47,8 @@ export default function Medialist() {
         <li>
           <img
             onClick={() => {
-              setCounterMovies((currMovie) => currMovie + 1);
+              if (counterMovies < movies.total_pages)
+                setCounterMovies((currMovie) => currMovie + 1);
             }}
             src="./img/forward-solid.svg"
             alt="forward arrow"
@@ -69,7 +71,8 @@ export default function Medialist() {
         <li>
           <img
             onClick={() => {
-              setCounterTvSeries((currTvSerie) => currTvSerie - 1);
+              if (counterMovies < 0)
+                setCounterTvSeries((currTvSerie) => currTvSerie - 1);
             }}
             src="./img/backward-solid.svg"
             alt="backward arrow"
@@ -79,7 +82,7 @@ export default function Medialist() {
         <li>
           <img
             onClick={() => {
-              tvSeries.page !== 1 &&
+              if (counterMovies < tvSeries.total_pages)
                 setCounterTvSeries((currCounter) => currCounter + 1);
             }}
             src="./img/forward-solid.svg"

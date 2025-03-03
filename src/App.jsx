@@ -17,7 +17,7 @@ function App() {
   // TV Series
   const [tvSeries, setTvSeries] = useState([]);
   // Container Value of search
-  const [searchMedia, setSearchMedia] = useState([]);
+  const [searchMedia, setSearchMedia] = useState("");
 
   // Functions
   function scrollMedia(numPage, choice, searchMedia, typeMedia) {
